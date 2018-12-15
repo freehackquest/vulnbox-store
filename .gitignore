@@ -1,0 +1,5 @@
+*.pyc
+
+html/*
+!html/webhook_php
+github_downloads/*

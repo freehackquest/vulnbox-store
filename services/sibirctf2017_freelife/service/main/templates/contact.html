@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Head -->
+<head>
+
+  <title>Free Life</title>
+
+  <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <!-- //Meta-Tags -->
+
+  <!-- Custom-Stylesheet-Links -->
+    <!-- Bootstrap-CSS -->     <link rel="stylesheet" href="static/css/bootstrap.min.css"  type="text/css" media="all">
+    <!-- Default-CSS -->     <link rel="stylesheet" href="static/css/style.css"      type="text/css" media="all">
+    <!-- Navigation-Menu-CSS --> <link rel="stylesheet" href="static/css/menu_wave.css"    type="text/css" media="all">
+    <!-- Gallery-Popup-CSS -->   <link rel="stylesheet" href="static/css/chocolat.css"     type="text/css" media="all">
+  <!-- //Custom-Stylesheet-Links -->
+
+ <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+
+
+
+</head>
+<!-- //Head -->
+
+
+
+<!-- Body -->
+<body>
+
+  <div class="container">
+    <div class="content-wrap">
+
+      <!-- Page-Content -->
+      <div class="content">
+
+        
+        <!-- Index-About -->
+        <div class="index-about">
+
+          <div class="col-md-6 col-sm-6 index-about-grid index-about-info">
+            <h1>MEMBER FORM</h1>
+
+<form class="form-horizontal" action="/contact" method="post">
+    <fieldset>
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Name:</label>  
+      <div class="col-md-4">
+      <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Email:</label>  
+      <div class="col-md-4">
+      <input id="email" name="email" type="text" placeholder="" class="form-control input-md" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Address:</label>  
+      <div class="col-md-4">
+      <input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="name">Phone number:</label>  
+      <div class="col-md-4">
+      <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md" required="">
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="phone">Credit card number:</label>  
+      <div class="col-md-4">
+      <input id="ccn" name="ccn" type="text" placeholder="" class="form-control input-md" required="">
+        
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4" for="singlebutton"></label>
+      <div class="col-md-4">
+        <button class="btn ">Send</button>
+      </div>
+    </div>
+
+    </fieldset>
+</form>
+          </div>
+     
+        </div>
+        <!-- //Index-About -->
+
+      </div>
+      <!-- //Page-Content -->
+
+    </div>
+
+  </div>
+
+
+  <!-- Necessary-JavaScript-Files-&-Links -->
+
+    <!-- Bootstrap-JavaScript-File -->  <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+    <!-- Supportive-JavaScript-File --> <script type="text/javascript" src="static/js/jquery-2.1.4.min.js"></script>
+
+
+    <!-- Popup-Box-JavaScript -->
+      <script src="static/js/jquery.chocolat.js"></script>
+      <script type="text/javascript">
+        $(function() {
+          $('.gallery-item a').Chocolat();
+        });
+      </script>
+    <!-- //Popup-Box-JavaScript -->
+    
+    <!-- FlexSlider-JavaScript -->
+      <script defer src="static/js/jquery.flexslider.js"></script>
+      <script type="text/javascript">
+        $(function(){
+          SyntaxHighlighter.all();
+        });
+        $(window).load(function(){
+          $('.flexslider').flexslider({
+            animation: "slide",
+            start: function(slider){
+              $('body').removeClass('loading');
+            }
+          });
+        });
+      </script>
+    <!-- //FlexSlider-JavaScript -->
+
+  <!-- //Necessary-JavaScript-Files-&-Links -->
+
+
+
+</body>
+<!-- //Body -->
+
+</html>

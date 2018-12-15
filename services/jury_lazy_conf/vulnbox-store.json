@@ -1,0 +1,27 @@
+{
+    "id": "jury_lazy_conf",
+    "name": "lazy-conf",
+    "version": "1.0.0",
+    "game": "jury",
+    "author": "sea-kg",
+    "created": "Aug 2018",
+    "contacts": "mrseakg@gmail.com",
+    "issues": "https://github.com/freehackquest/vulnbox-store/issues",
+    "checker-install-linux-packages": [
+        "python",
+        "python-requests",
+        "python-pip",
+        "libssl-dev"
+    ],
+    "checker-install-run-commands": [
+        "pip install requests"
+    ],
+    "service-using-ports": [
+        17345
+    ],
+    "keywords": [
+        "python",
+        "example service"
+    ],
+    "skip": ""
+}

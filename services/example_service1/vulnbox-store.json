@@ -1,0 +1,26 @@
+{
+    "id": "example_service1",
+    "name": "Service1",
+    "version": "1.0.0",
+    "game": "Example",
+    "author": "sea-kg",
+    "created": "Aug 2018",
+    "contacts": "mrseakg@gmail.com",
+    "issues": "https://github.com/freehackquest/vulnbox-store/issues",
+    "checker-install-linux-packages": [
+        "python",
+        "python-pip",
+        "libssl-dev"
+    ],
+    "checker-install-run-commands": [
+        "pip install requests"
+    ],
+    "service-using-ports": [
+        4441
+    ],
+    "keywords": [
+        "python",
+        "example service"
+    ],
+    "skip": ""
+}

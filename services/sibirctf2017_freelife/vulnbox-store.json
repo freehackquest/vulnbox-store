@@ -1,0 +1,26 @@
+{
+    "id": "sibirctf2017_freelife",
+    "name": "FreeLife",
+    "version": "1.0.0",
+    "game": "SibirCTF 2017",
+    "author": "timur",
+    "created": "Aug 2017",
+    "contacts": "",
+    "issues": "https://github.com/freehackquest/vulnbox-store/issues",
+    "checker-install-linux-packages": [
+        "python",
+        "python-pip",
+        "libssl-dev"
+    ],
+    "checker-install-run-commands": [
+        "pip install requests"
+    ],
+    "service-using-ports": [
+        80
+    ],
+    "keywords": [
+        "python",
+        "example"
+    ],
+    "skip": ""
+}
