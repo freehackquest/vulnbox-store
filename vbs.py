@@ -15,6 +15,9 @@ import zipfile
 import shutil
 import re
 
+version = '0.0.1'
+fhq_jury_ad_use_version = '0.2.0'
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -37,17 +40,18 @@ For push your service please fork and pull request to https://github.com/freehac
 Issues: https://github.com/freehackquest/vulnbox-store/issues
 
 Commands:
+    version - version of current script and for fhq-jury-ad
+    info - installed services and teams list
     init - will be init game in current directory
     urls - list of urls
     urls-add [url] - will be added url with vulnbox.store
     urls-rm [url] - will be added url with vulnbox.store
-    info - installed services and teams list
     update - update list information about services
     search [search] - search services by keywords and names
     download [name] - download service and checker to folder ./.vbs/[name]
     install [name] - will be installed ./cond.d/[name] and to vulnbox
     remove [name] - will be removed from conf.d and from vulnbox
-    team [search] - list of teams (from vulnbox.store)
+    teams-search [search] - list of teams (from vulnbox.store)
     team-add [name] - add the team
     team-rm [name] - remove the team
 
@@ -110,9 +114,6 @@ def cmd_update():
         f.write(json.dumps(r.json(), indent=4))
         f.close()
     exit(0)
-
-def printServiceInfo(s, u):
-    pass
 
 def cmd_download():
     name_ = name.lower()
@@ -240,7 +241,22 @@ def findServiceById(service_id):
                     s['from'] = u
                     res = s
                 else:
-                    print("ERROR: duplicate " + service_id)
+                    print("ERROR: duplicate serviceid " + service_id)
+    return res
+
+def findTeamById(team_id):
+    res = None
+    for u in urls:
+        u2 = preapareCacheUrl(u, 'teams')
+        with open(u2) as f:
+            teams_json = json.load(f)
+        for s in teams_json:
+            if s['id'] == team_id:
+                if not res:
+                    s['from'] = u
+                    res = s
+                else:
+                    print("ERROR: duplicate teamid " + team_id)
     return res
 
 def cmd_search():
@@ -266,8 +282,87 @@ def cmd_search():
     print(" *** Found: " + str(nFound))
     print("")
 
+def cmd_teams_search():
+    print("Searching teams... '" + name.lower() + "'")
+    nFound = 0
+    for u in urls:
+        u2 = preapareCacheUrl(u, 'teams')
+        with open(u2) as f:
+            teams_json = json.load(f)
+        for s in teams_json:
+            combined_text = ''
+            combined_text = combined_text + s["name"] + '\n'
+            combined_text = combined_text + s["id"] + '\n'
+            combined_text = combined_text.lower()
+
+            if combined_text.find(name.lower()) != -1:
+                nFound = nFound + 1
+                print(' ' + bcolors.OKGREEN + s['id'] + bcolors.ENDC + " - " + s['name'] + "  (from " + bcolors.DARKGRAY + u + bcolors.ENDC + ")")
+    print("")
+    print(" *** Found: " + str(nFound))
+    print("")
+
+def cmd_team_add():
+    name_ = name.lower()
+    pattern = re.compile("^([a-z0-9_]+)$")
+    if not pattern.match(name_):
+        print("Team name invalid")
+        exit(0)
+    team_info = findTeamById(name_)
+    if team_info != None:
+        logo_url = 'https://vulnbox.store/teams/' + team_info['logo']
+        logo_path = './jury.d/html/images/teams/' + team_info['logo']
+        print("Download logo " + logo_url)
+        if not os.path.isfile(logo_path):
+            r = requests.get(logo_url, allow_redirects=True)
+            open(logo_path, 'wb').write(r.content)
+    else:
+        team_info = {}
+        team_info['id'] = name_
+        team_info['name'] = name_
+        team_info['name'] = raw_input('Team - Name [' + team_info['name']  + ']: ') or team_info['name'] 
+        team_info['logo'] = name_ + '.svg'
+        if not os.path.isfile('./jury.d/html/images/teams/' + name_ + '.svg'):
+            r = requests.get('https://vulnbox.store/teams/unknown.svg', allow_redirects=True)
+            open('./jury.d/html/images/teams/' + name_ + '.svg', 'wb').write(r.content)
+
+    team_info['ip_address'] = '127.0.0.1'
+    team_info['ip_address'] = raw_input('Team - IP Address [' + team_info['ip_address']  + ']: ') or team_info['ip_address'] 
+
+    team_conf_path = "./jury.d/teams/" + name_ + ".conf"
+    print("Write to " + team_conf_path)
+    with open(team_conf_path, 'w') as f:
+        f.write("teams." + name_ + ".active = yes\n")
+        f.write("teams." + name_ + ".name = " + team_info['name'] + "\n")
+        f.write("teams." + name + ".logo = images/teams/" + team_info['logo'] + "\n")
+        f.write("teams." + name_ + ".ip_address = images/teams/" + team_info['logo'] + "\n")
+        f.close()
+
+def cmd_team_remove():
+    name_ = name.lower()
+    pattern = re.compile("^([a-z0-9_]+)$")
+    if not pattern.match(name_):
+        print("Team name invalid")
+        exit(0)
+    
+    team_conf_path = './jury.d/teams/' + name_ + '.conf'
+
+    if not os.path.isfile(team_conf_path):
+        print("Team not found")
+        exit(0)
+
+    cnf = parseConf(team_conf_path)
+
+
+    if os.path.isfile('./jury.d/html/' + cnf['teams.' + name_ + '.logo']):
+        os.remove('./jury.d/html/' + cnf['teams.' + name_ + '.logo'])
+   
+    os.remove(team_conf_path)
+    print("Removed")
+
 def cmd_info():
     services = os.listdir("./jury.d/checkers/")
+    services.sort()
     print(" *** INFORMATION ***\n")
     print("Checkers:\n")
     n = 0
@@ -284,17 +379,30 @@ def cmd_info():
     print("\nTeams:\n")
     n = 0
     teams = os.listdir("./jury.d/teams/")
+    teams.sort()
     for t in teams:
-        if sinfo != None:
-            n = n + 1
-            print(' ' + bcolors.OKGREEN + 'defined team ' + sinfo['id'] + bcolors.ENDC + " - " + sinfo['game'] + " / " + sinfo['name'] + " (" + ",".join(sinfo["keywords"]) + ")")
-            print("\ton " + bcolors.DARKGRAY + sinfo['from'] + bcolors.ENDC)
+        n = n + 1
+        team_id = t.split(".")[0]
+        team_info = findTeamById(team_id)
+        cnf = parseConf("./jury.d/teams/" + t)
+        if team_info == None:
+            team_info = {}
+            team_info['id'] = team_id
+        frm = ''
+        
+        team_info['name'] = cnf['teams.' + team_id + '.name']
+        team_info['logo'] = cnf['teams.' + team_id + '.logo']
+
+        if 'from' in team_info:
+            frm = bcolors.DARKGRAY + " (from: " + team_info['from'] + ")" + bcolors.ENDC
+        print(bcolors.OKGREEN + ' * defined team ' + team_info['id'] + bcolors.ENDC + " - " + team_info['name'] + ', logo: ./jury.d/html/' + team_info['logo'] + frm)
+        
     if n == 0:
         print(bcolors.WARNING
             + " (!) Add new team: 'vbs team-add [name]'"
             + "\n (!) Alse you can look preconfigured list of teams: 'vbs teams'"
             + bcolors.ENDC)
-        print("\n")
+    print("")
 
 def parseConf(path):
     if not os.path.isfile(path):
@@ -321,6 +429,8 @@ def cmd_init():
     create_dirs.append("./jury.d/checkers")
     create_dirs.append("./jury.d/teams")
     create_dirs.append("./jury.d/html") # files will be created by jury
+    create_dirs.append("./jury.d/html/images")
+    create_dirs.append("./jury.d/html/images/teams")
     create_dirs.append("./jury.d/logs")
     create_dirs.append("./.vbs")
     create_dirs.append("./.vbs/cache")
@@ -417,19 +527,19 @@ def cmd_init():
     with open('./docker_jury/build_docker.sh', 'w') as f:
         f.write("#!/bin/bash\n")
         f.write("\n")
-        f.write("docker build --rm=true -t 'ctfgame-" + game_id + "/fhq-jury-ad:0.2.0' .\n")
+        f.write("docker build --rm=true -t 'ctfgame-" + game_id + "/fhq-jury-ad:" + fhq_jury_ad_use_version + "' .\n")
     os.chmod('./docker_jury/build_docker.sh', stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
 
     print("Prepare ./docker_jury/clean_docker.sh")
     with open('./docker_jury/clean_docker.sh', 'w') as f:
         f.write("#!/bin/bash\n")
         f.write("\n")
-        f.write("docker rmi -f 'ctfgame-" + game_id + "/fhq-jury-ad:0.2.0'\n")
+        f.write("docker rmi -f 'ctfgame-" + game_id + "/fhq-jury-ad:" + fhq_jury_ad_use_version + "'\n")
     os.chmod('./docker_jury/clean_docker.sh', stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
 
     print("Prepare ./docker_jury/Dockerfile")
     with open('./docker_jury/Dockerfile', 'w') as f:
-        f.write("FROM freehackquest/fhq-jury-ad:0.2.0\n")
+        f.write("FROM freehackquest/fhq-jury-ad:" + fhq_jury_ad_use_version + "\n")
         f.write("\n")
         f.write("### Next lines please don't change manually - becouse will be automaticly overrided \n")
         f.write("#[begin-checkers-install]\n")
@@ -460,7 +570,7 @@ services:
   """ + game_id + """_jury:
     depends_on:
       - """ + mysql_dbhost + """
-    image: ctfgame-""" + game_id + """/fhq-jury-ad:0.2.0
+    image: ctfgame-""" + game_id + """/fhq-jury-ad:""" + fhq_jury_ad_use_version + """
     volumes:
       - "./jury.d:/usr/share/fhq-jury-ad/jury.d"
     ports:
@@ -514,8 +624,13 @@ if command == "urls-rm":
     removeServicesJSON(name)
     exit(0)
 
+if command == "version":
+    print("Version script: " + version)
+    print("Will be used version of fhq-jury-ad: " + fhq_jury_ad_use_version)
+
 if command == "update":
     cmd_update()
+    exit(0)
 
 if command == "info":
     cmd_info()
@@ -537,5 +652,16 @@ if command == "remove":
     cmd_remove()
     exit(0)
 
+if command == "teams-search":
+    cmd_teams_search()
+    exit(0)
+
+if command == "team-add":
+    cmd_team_add()
+    exit(0)
+
+if command == "team-rm":
+    cmd_team_remove()
+    exit(0)
 
 usage()

@@ -325,7 +325,7 @@ for s in teams_path:
         log_err(info_json_path + ' - not found file ' + logo_img)
         continue
     
-    shutil.copyfile(info_json_path, './html/teams/' + info_json['logo'])
+    shutil.copyfile(logo_img, './html/teams/' + info_json['logo'])
     teams_json.append(info_json)
     print_success ("Done")
 

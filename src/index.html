@@ -53,17 +53,18 @@ For push your service please fork and pull request to https://github.com/freehac
 Issues: https://github.com/freehackquest/vulnbox-store/issues
 
 Commands:
+    version - version of current script and for fhq-jury-ad
+    info - installed services and teams list
     init - will be init game in current directory
     urls - list of urls
     urls-add <span style="color: #333333">[</span>url<span style="color: #333333">]</span> - will be added url with vulnbox.store
     urls-rm <span style="color: #333333">[</span>url<span style="color: #333333">]</span> - will be added url with vulnbox.store
-    info - installed services and teams list
     update - update list information about services
     search <span style="color: #333333">[</span>search<span style="color: #333333">]</span> - search services by keywords and names
     download <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - download service and checker to folder ./.vbs/<span style="color: #333333">[</span>name<span style="color: #333333">]</span>
     install <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - will be installed ./cond.d/<span style="color: #333333">[</span>name<span style="color: #333333">]</span> and to vulnbox
     remove <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - will be removed from conf.d and from vulnbox
-    team <span style="color: #333333">[</span>search<span style="color: #333333">]</span> - list of teams <span style="color: #333333">(</span>from vulnbox.store<span style="color: #333333">)</span>
+    teams-search <span style="color: #333333">[</span>search<span style="color: #333333">]</span> - list of teams <span style="color: #333333">(</span>from vulnbox.store<span style="color: #333333">)</span>
     team-add <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - add the team
     team-rm <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - remove the team
 
@@ -96,7 +97,7 @@ Directories:
 <span style="color: #996633">$ </span>vbs search example
 <span style="color: #996633">$ </span>vbs install example_service1
 <span style="color: #996633">$ </span>vbs install example_service2
-<span style="color: #996633">$ </span>vbs team keva
+<span style="color: #996633">$ </span>vbs teams-search keva
 <span style="color: #996633">$ </span>vbs team-add keva
 <span style="color: #996633">$ </span>vbs team-add someone
 <span style="color: #996633">$ </span>cd docker_jury && ./build_jury.sh
