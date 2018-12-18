@@ -39,15 +39,10 @@ f_id = sys.argv[3]
 flag = sys.argv[4]
 
 # test shot service
-daf;ld'lfsdasd
-
-# test mumble service
-while(1):
-    print "sec"
-    time.sleep(1)
+# daf;ld'lfsdasd
 
 # will be mumble (2) - for test jury
-# while True: time.sleep(10);
+# while True: time.sleep(1);
 
 def put_flag():
     global host, port, f_id, flag

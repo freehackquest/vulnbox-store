@@ -335,7 +335,7 @@ def cmd_team_add():
         f.write("teams." + name_ + ".active = yes\n")
         f.write("teams." + name_ + ".name = " + team_info['name'] + "\n")
         f.write("teams." + name + ".logo = images/teams/" + team_info['logo'] + "\n")
-        f.write("teams." + name_ + ".ip_address = images/teams/" + team_info['logo'] + "\n")
+        f.write("teams." + name_ + ".ip_address = " + team_info['ip_address'] + "\n")
         f.close()
 
 def cmd_team_remove():
