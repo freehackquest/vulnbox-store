@@ -1,5 +1,4 @@
 FROM python:latest
-MAINTAINER Evgenii Sopov <mrseakg@gmail.com>
 
 RUN mkdir /root/team && chmod 777 /root/team && mkdir /root/jury && chmod 777 /root/jury
 COPY service.py /root/service.py

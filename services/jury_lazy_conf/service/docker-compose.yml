@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  jury_lazy_conf:
+    build: .
+    image: jury_lazy_conf:0.0.1
+    volumes:
+      - "./flags:/root/flags"
+    ports:
+      - "17345:17345"
+    restart: always
+    networks:
+      - jury_lazy_conf
+
+networks:
+  jury_lazy_conf:
+    driver: bridge

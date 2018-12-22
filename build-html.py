@@ -254,6 +254,10 @@ def checkPackageService(id, path):
     if not os.path.isfile(path + '/service/Dockerfile'):
         log_err(path + '/service/Dockerfile' + " - file missing")
         return False
+
+    if not os.path.isfile(path + '/service/docker-compose.yml'):
+        log_err(path + '/service/docker-compose.yml' + " - file missing")
+        return False
     
     if not os.path.isfile(path + '/service/README.md'):
         log_err(path + '/service/README.md' + " - file missing")

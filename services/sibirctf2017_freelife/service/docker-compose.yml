@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  sibirctf2017_freelife:
+    build: .
+    image: sibirctf2017_freelife:0.0.1
+    volumes:
+      - "./flags:/root/flags"
+    ports:
+      - "80:80"
+    restart: always
+    networks:
+      - sibirctf2017_freelife
+
+networks:
+  sibirctf2017_freelife:
+    driver: bridge
