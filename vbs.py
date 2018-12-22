@@ -183,6 +183,28 @@ def updateDockerfileJury():
     with open('./docker_jury/Dockerfile', 'w') as f:
         f.write(dockerfile_jury)
 
+def updateVulnboxServices():
+    print("Updating ./vulnbox/run.sh")
+    run_sh = []
+    run_sh.append("docker-compose")
+
+    services = os.listdir("./vulnbox/")
+    for s in services:
+        sinfo = findServiceById(s)
+        if sinfo != None:
+            run_sh.append("-f " + s + "/docker-compose.yml")
+    
+    run_sh.append("up --build")
+
+    with open('./vulnbox/run.sh', 'w') as f:
+        f.write("#!/bin/bash\n")
+        f.write("\n")
+        f.write("# Automaticly generted\n")
+        f.write("\n")
+        f.write(" \\\n".join(run_sh))
+        f.write("\n")
+
+
 def cmd_install():
     name_ = name.lower()
     pattern = re.compile("^([a-z0-9_]+)$")
@@ -210,6 +232,7 @@ def cmd_install():
         shutil.rmtree(dir_vulnbox)
     shutil.copytree('./.vbs/downloads/service_' + name_ + '/service', dir_vulnbox)
     updateDockerfileJury()
+    updateVulnboxServices()
 
 def cmd_remove():
     name_ = name.lower()
