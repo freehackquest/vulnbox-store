@@ -1,18 +1,63 @@
-
 html, body {
     background-color: #202020;
     color: #aaa;
-    margin: 0px;
-    padding: 0px;
+    /* margin: 0px; */
+    /* padding: 0px; */
     font: 12pt monospace;
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px; */
+    /* padding-right: 50px; */
+    /* display: grid; */
+}
+
+.container {
+    display: grid;
+    /* display: inline-grid; */
+    grid-template-columns: repeat(12, 1fr);
+    /* grid: 40px 70px 50px 60px / 100px  110px 85px 90px 120px; */
+    /* grid-auto-rows: 15px;
+  grid-auto-columns: 20px;
+  grid-gap: 12px 10px; */
+    /* text-align: center; */
+    /* justify-content: center; */
+}
+
+.main {
+    grid-column: 2 / 12;
+    /* grid-row: 2 / 4; */
+}
+
+.terminal {
+    grid-column: 3 / 11;
+    background: #000;
+    /* overflow: auto; */
+    /* width: auto; */
+    border: solid gray;
+    /* border-width: .1em .1em .1em .8em; */
+    /* padding: .2em .6em; */
+}
+
+.bigger-line-height {
+    margin: 0;
+    line-height: 125%
+}
+
+.green {
+    color: #996633
+}
+
+.dark-green {
+    color: #008800
+}
+
+.grey {
+    color: #333333
 }
 
 .header {
+    grid-column: span 12;
     text-align: center;
-    height: 70px;
     margin-top: 30px;
+    /* height: 70px; */
     margin-bottom: 30px;
 }
 
@@ -54,11 +99,11 @@ a {
 
 a:active {
     color: #eee;
-} 
+}
 
 a:link {
     color: #eee;
-} 
+}
 
 a:hover {
     color: #eee;
@@ -71,4 +116,3 @@ a:focused {
 a:visited {
     color: #eee;
 }
-
