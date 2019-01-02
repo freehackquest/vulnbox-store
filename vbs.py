@@ -1,6 +1,6 @@
 #!/usr/bin/python2
 import sys
-import math 
+import math
 import socket
 import random
 import time
@@ -29,7 +29,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-def usage(): 
+def usage():
     print("""
 Helper's tool for fhq-jury-ad
 
@@ -76,7 +76,7 @@ urls = ["https://vulnbox.store/"]
 if os.path.isfile("./.vbs/urls"):
     with open("./.vbs/urls") as f:
         urls = f.readlines()
-    urls = [x.strip() for x in urls] 
+    urls = [x.strip() for x in urls]
 
 def preapareCacheUrl(u, suffix):
     u2 = re.sub(r"[^a-zA-Z0-9]", "_", u)
@@ -133,7 +133,7 @@ def cmd_download():
         exit(0)
     dirto = './.vbs/downloads/service_' + name_
     print("Download: \n\tURL: " + download_url + "\n\tDirectory:" + dirto + "\n")
-    
+
     if not os.path.isdir(dirto):
         os.mkdir(dirto)
     else:
@@ -161,10 +161,10 @@ def updateDockerfileJury():
             install_linux_packages = mergeLists(install_linux_packages, sinfo['checker-install-linux-packages'])
             install_run_commands = mergeLists(install_run_commands, sinfo['checker-install-run-commands'])
     docker_commands = ['#[begin-checkers-install]']
-    
+
     if len(install_linux_packages) > 0:
         docker_commands.append('RUN apt install -y "' + '" "'.join(install_linux_packages) + '"')
-    
+
     for cm in install_run_commands:
         docker_commands.append('RUN ' + cm)
 
@@ -193,7 +193,7 @@ def updateVulnboxServices():
         sinfo = findServiceById(s)
         if sinfo != None:
             run_sh.append("-f " + s + "/docker-compose.yml")
-    
+
     run_sh.append("up --build")
 
     with open('./vulnbox/run.sh', 'w') as f:
@@ -225,7 +225,7 @@ def cmd_install():
     if os.path.isdir(dir_checker):
         shutil.rmtree(dir_checker)
     shutil.copytree('./.vbs/downloads/service_' + name_ + '/checker', dir_checker)
-    # TODO checker.py to chmod +x 
+    # TODO checker.py to chmod +x
 
     dir_vulnbox = './vulnbox/' + name_
     if os.path.isdir(dir_vulnbox):
@@ -343,14 +343,14 @@ def cmd_team_add():
         team_info = {}
         team_info['id'] = name_
         team_info['name'] = name_
-        team_info['name'] = raw_input('Team - Name [' + team_info['name']  + ']: ') or team_info['name'] 
+        team_info['name'] = raw_input('Team - Name [' + team_info['name']  + ']: ') or team_info['name']
         team_info['logo'] = name_ + '.svg'
         if not os.path.isfile('./jury.d/html/images/teams/' + name_ + '.svg'):
             r = requests.get('https://vulnbox.store/teams/unknown.svg', allow_redirects=True)
             open('./jury.d/html/images/teams/' + name_ + '.svg', 'wb').write(r.content)
 
     team_info['ip_address'] = '127.0.0.1'
-    team_info['ip_address'] = raw_input('Team - IP Address [' + team_info['ip_address']  + ']: ') or team_info['ip_address'] 
+    team_info['ip_address'] = raw_input('Team - IP Address [' + team_info['ip_address']  + ']: ') or team_info['ip_address']
 
     team_conf_path = "./jury.d/teams/" + name_ + ".conf"
     print("Write to " + team_conf_path)
@@ -367,7 +367,7 @@ def cmd_team_remove():
     if not pattern.match(name_):
         print("Team name invalid")
         exit(0)
-    
+
     team_conf_path = './jury.d/teams/' + name_ + '.conf'
 
     if not os.path.isfile(team_conf_path):
@@ -379,7 +379,7 @@ def cmd_team_remove():
 
     if os.path.isfile('./jury.d/html/' + cnf['teams.' + name_ + '.logo']):
         os.remove('./jury.d/html/' + cnf['teams.' + name_ + '.logo'])
-   
+
     os.remove(team_conf_path)
     print("Removed")
 
@@ -412,14 +412,14 @@ def cmd_info():
             team_info = {}
             team_info['id'] = team_id
         frm = ''
-        
+
         team_info['name'] = cnf['teams.' + team_id + '.name']
         team_info['logo'] = cnf['teams.' + team_id + '.logo']
 
         if 'from' in team_info:
             frm = bcolors.DARKGRAY + " (from: " + team_info['from'] + ")" + bcolors.ENDC
         print(bcolors.OKGREEN + ' * defined team ' + team_info['id'] + bcolors.ENDC + " - " + team_info['name'] + ', logo: ./jury.d/html/' + team_info['logo'] + frm)
-        
+
     if n == 0:
         print(bcolors.WARNING
             + " (!) Add new team: 'vbs team-add [name]'"
@@ -564,7 +564,7 @@ def cmd_init():
     with open('./docker_jury/Dockerfile', 'w') as f:
         f.write("FROM freehackquest/fhq-jury-ad:" + fhq_jury_ad_use_version + "\n")
         f.write("\n")
-        f.write("### Next lines please don't change manually - becouse will be automaticly overrided \n")
+        f.write("### Next lines please don't change manually - because will be automatically overrided \n")
         f.write("#[begin-checkers-install]\n")
         f.write("#[end-checkers-install]\n")
         f.write("\n")

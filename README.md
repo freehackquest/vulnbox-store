@@ -1,10 +1,10 @@
 # vulnbox-store
 
-## Requriments
+## Requirements
 
 * python
 
-## Installation 
+## Installation
 
 ```
 $ git clone %Your http link% ~/vulnbox-store.git
@@ -16,7 +16,7 @@ $ ./build-html.py
 
 How available you local vulnbox-store by http://localhost/vbs/
 
-## Add new service 
+## Add new service
 
 After add new service to services please run `./build-html.py`
 
