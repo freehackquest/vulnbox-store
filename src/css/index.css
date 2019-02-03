@@ -1,118 +1,67 @@
 html, body {
-    background-color: #202020;
-    color: #aaa;
-    /* margin: 0px; */
-    /* padding: 0px; */
-    font: 12pt monospace;
-    /* padding-left: 50px; */
-    /* padding-right: 50px; */
-    /* display: grid; */
+  background-color: #202020;
+  color: #aaa;
+  font: 12pt monospace;
 }
 
 .container {
-    display: grid;
-    /* display: inline-grid; */
-    grid-template-columns: repeat(12, 1fr);
-    /* grid: 40px 70px 50px 60px / 100px  110px 85px 90px 120px; */
-    /* grid-auto-rows: 15px;
-  grid-auto-columns: 20px;
-  grid-gap: 12px 10px; */
-    /* text-align: center; */
-    /* justify-content: center; */
+  display: grid;
+  grid-template-columns: 3% 2% 90% 2% 3%;
+  row-gap: 1%;
 }
 
-.main {
-    grid-column: 2 / 12;
-    /* grid-row: 2 / 4; */
+.text {
+  grid-column: 2 / 5;
 }
 
 .terminal {
-    grid-column: 3 / 11;
-    background: #000;
-    /* overflow: auto; */
-    /* width: auto; */
-    border: solid gray;
-    /* border-width: .1em .1em .1em .8em; */
-    /* padding: .2em .6em; */
-}
-
-.bigger-line-height {
-    margin: 0;
-    line-height: 125%
-}
-
-.green {
-    color: #996633
-}
-
-.dark-green {
-    color: #008800
-}
-
-.grey {
-    color: #333333
+  overflow: scroll;
+  font: 11pt monospace;
 }
 
 .header {
-    grid-column: span 12;
-    text-align: center;
-    margin-top: 30px;
-    /* height: 70px; */
-    margin-bottom: 30px;
+  grid-column: span 5;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .logo {
-    display: inline-block;
-    height: 70px;
-    width: 70px;
-    vertical-align: top;
-    background-image: url("../images/logo.png");
-    background-size: 50px 50px;
-    background-repeat: no-repeat;
-    background-position: center center;
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  vertical-align: top;
+  background-image: url("../images/logo.png");
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .title {
-    display: inline-block;
-    height: 70px;
-    line-height: 70px;
-    vertical-align: top;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-table {
-    display: inline-table;
-}
-
-tr:hover {
-    background-color: #606060;
-}
-
-td {
-    padding: 20px;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 a {
-    color: #eee;
+  color: #eee;
 }
 
 a:active {
-    color: #eee;
+  color: #eee;
 }
 
 a:link {
-    color: #eee;
+  color: #eee;
 }
 
 a:hover {
-    color: #eee;
-}
-
-a:focused {
-    color: #eee;
+  color: #eee;
 }
 
 a:visited {
-    color: #eee;
+  color: #eee;
 }

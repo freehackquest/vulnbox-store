@@ -15,7 +15,8 @@
       Store For fhq-jury-ad
     </div>
   </div>
-  <div class="main">
+
+  <div class='text'>
     <p>
       It's just collection of services with vulnerabilities for training games like ctf (attack/defence);
     </p>
@@ -31,17 +32,14 @@
     <br>
     <h3>Issues tracker</h3>
     <a target="_blank" href="https://github.com/freehackquest/vulnbox-store/issues">https://github.com/freehackquest/vulnbox-store/issues</a>
-
-
     <br>
     <br>
     <br>
     <h3>Install for linux</h3>
     <!-- HTML generated using hilite.me -->
-    <div class="terminal">
-      <pre class="bigger-line-height"><span class="green">$ </span>sudo curl -L <span style="background-color: #111">&quot;https://vulnbox.store/vbs.py&quot;</span> -o /usr/local/bin/vbs
-<span class="green">$ </span>sudo chmod +x /usr/local/bin/vbs
-</pre>
+    <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>sudo curl -L <span style="background-color: #111">&quot;https://vulnbox.store/vbs.py&quot;</span> -o /usr/local/bin/vbs
+<span style="color: #996633">$ </span>sudo chmod +x /usr/local/bin/vbs</pre>
     </div>
 
     <br>
@@ -49,11 +47,11 @@
     <br>
     <h3>Usage</h3>
     <!-- HTML generated using hilite.me -->
-    <div class="terminal">
-      <pre class="bigger-line-height">Helper's tool <span style="color: #008800; font-weight: bold">for </span>fhq-jury-ad
+    <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%">Helper's tool <span style="color: #008800; font-weight: bold">for </span>fhq-jury-ad
 
     Usage:
-	/usr/local/bin/vbs <span class="grey">[</span><span style="color: #007020">command</span><span class="grey">]</span> <span class="grey">[</span>name<span class="grey">]</span>
+	/usr/local/bin/vbs <span style="color: #333333">[</span><span style="color: #007020">command</span><span style="color: #333333">]</span> <span style="color: #333333">[</span>name<span style="color: #333333">]</span>
 
 For push your service please fork and pull request to https://github.com/freehackquest/vulnbox-store
 
@@ -64,22 +62,22 @@ Commands:
     info - installed services and teams list
     init - will be init game in current directory
     urls - list of urls
-    urls-add <span class="grey">[</span>url<span class="grey">]</span> - will be added url with vulnbox.store
-    urls-rm <span class="grey">[</span>url<span class="grey">]</span> - will be added url with vulnbox.store
+    urls-add <span style="color: #333333">[</span>url<span style="color: #333333">]</span> - will be added url with vulnbox.store
+    urls-rm <span style="color: #333333">[</span>url<span style="color: #333333">]</span> - will be added url with vulnbox.store
     update - update list information about services
-    search <span class="grey">[</span>search<span class="grey">]</span> - search services by keywords and names
-    download <span style="color: #terminal">[</span>name<span class="grey">]</span> - download service and checker to folder ./.vbs/<span class="grey">[</span>name<span class="grey">]</span>
-    install <span class="grey">[</span>name<span class="grey">]</span> - will be installed ./cond.d/<span class="grey">[</span>name<span class="grey">]</span> and to vulnbox
-    remove <span class="grey">[</span>name<span class="grey">]</span> - will be removed from conf.d and from vulnbox
-    teams-search <span class="grey">[</span>search<span class="grey">]</span> - list of teams <span class="grey">(</span>from vulnbox.store<span class="grey">)</span>
-    team-add <span class="grey">[</span>name<span class="grey">]</span> - add the team
-    team-rm <span class="grey">[</span>name<span class="grey">]</span> - remove the team
+    search <span style="color: #333333">[</span>search<span style="color: #333333">]</span> - search services by keywords and names
+    download <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - download service and checker to folder ./.vbs/<span style="color: #333333">[</span>name<span style="color: #333333">]</span>
+    install <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - will be installed ./cond.d/<span style="color: #333333">[</span>name<span style="color: #333333">]</span> and to vulnbox
+    remove <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - will be removed from conf.d and from vulnbox
+    teams-search <span style="color: #333333">[</span>search<span style="color: #333333">]</span> - list of teams <span style="color: #333333">(</span>from vulnbox.store<span style="color: #333333">)</span>
+    team-add <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - add the team
+    team-rm <span style="color: #333333">[</span>name<span style="color: #333333">]</span> - remove the team
 
 Directories:
     jury.d - folder with configs <span style="color: #008800; font-weight: bold">for </span>fhq-jury-ad
     docker_jury - folder with Dockerfile <span style="color: #008800; font-weight: bold">for </span>build jury docker
     vulnbox - folder with services and script <span style="color: #008800; font-weight: bold">for </span>vulnbox
-    </pre>
+</pre>
     </div>
 
 
@@ -94,24 +92,23 @@ Directories:
       <li>docker-compose</li>
       <li>nano</li>
     </ul>
-
     <!-- HTML generated using hilite.me -->
-    <div class="terminal">
-      <pre class="bigger-line-height"><span class="green">$ </span>mkdir ~/ctfgame0
-      <span class="green">$ </span>cd ~/ctfgame0
-      <span class="green">$ </span>vbs init
-      <span class="green">$ </span>vbs urls-add http://vulnbox.store/
-      <span class="green">$ </span>vbs update
-      <span class="green">$ </span>vbs search example
-      <span class="green">$ </span>vbs install example_service1
-      <span class="green">$ </span>vbs install example_service2
-      <span class="green">$ </span>vbs teams-search keva
-      <span class="green">$ </span>vbs team-add keva
-      <span class="green">$ </span>vbs team-add someone
-      <span class="green">$ </span>cd docker_jury && ./build_jury.sh
-      <span class="green">$ </span>cd ..
-      <span class="green">$ </span>docker-compose up
-      <span class="green">$ </span>zip -r vulnbox.zip vulnbox
+    <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>mkdir ~/ctfgame0
+      <span style="color: #996633">$ </span>cd ~/ctfgame0
+      <span style="color: #996633">$ </span>vbs init
+      <span style="color: #996633">$ </span>vbs urls-add http://vulnbox.store/
+      <span style="color: #996633">$ </span>vbs update
+      <span style="color: #996633">$ </span>vbs search example
+      <span style="color: #996633">$ </span>vbs install example_service1
+      <span style="color: #996633">$ </span>vbs install example_service2
+      <span style="color: #996633">$ </span>vbs teams-search keva
+      <span style="color: #996633">$ </span>vbs team-add keva
+      <span style="color: #996633">$ </span>vbs team-add someone
+      <span style="color: #996633">$ </span>cd docker_jury && ./build_jury.sh
+      <span style="color: #996633">$ </span>cd ..
+      <span style="color: #996633">$ </span>docker-compose up
+      <span style="color: #996633">$ </span>zip -r vulnbox.zip vulnbox
     </pre>
     </div>
 
@@ -125,18 +122,19 @@ Directories:
       <h1>{id}</h1>
       <p>Keywords: {keywords}</p>
       <p>Version: {version}; Author: {author}; Created: {created};</p>
-      <p>Install:
-        <div class="terminal">
-          <pre class="bigger-line-height"><span class="green">$ </span>vbs install {id}</pre>
+      <p style="margin-left:50px">Install:
+        <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+          <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>vbs install {id}</pre>
         </div>
       </p>
+
       <p>Manual download archive: <a tagret="_blank" href="{download}">{download}</a></p>
       <p>Game: {game}</p>
       <p>Issues: <a tagret="_blank" href="{issues}">{issues}</a></p>
       <p>Checker-Requirements: </p>
-      <pre>{checker-install}</pre>
+      <pre style="margin-left:50px">{checker-install}</pre>
     </template-service>
-  </div>
+
 </body>
 
 </html>
