@@ -1,74 +1,67 @@
-
 html, body {
-    background-color: #202020;
-    color: #aaa;
-    margin: 0px;
-    padding: 0px;
-    font: 12pt monospace;
-    padding-left: 50px;
-    padding-right: 50px;
+  background-color: #202020;
+  color: #aaa;
+  font: 12pt monospace;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 3% 2% 90% 2% 3%;
+  row-gap: 1%;
+}
+
+.text {
+  grid-column: 2 / 5;
+}
+
+.terminal {
+  overflow: scroll;
+  font: 11pt monospace;
 }
 
 .header {
-    text-align: center;
-    height: 70px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+  grid-column: span 5;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .logo {
-    display: inline-block;
-    height: 70px;
-    width: 70px;
-    vertical-align: top;
-    background-image: url("../images/logo.png");
-    background-size: 50px 50px;
-    background-repeat: no-repeat;
-    background-position: center center;
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+  vertical-align: top;
+  background-image: url("../images/logo.png");
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .title {
-    display: inline-block;
-    height: 70px;
-    line-height: 70px;
-    vertical-align: top;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-table {
-    display: inline-table;
-}
-
-tr:hover {
-    background-color: #606060;
-}
-
-td {
-    padding: 20px;
+  display: inline-block;
+  height: 70px;
+  line-height: 70px;
+  vertical-align: top;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 a {
-    color: #eee;
+  color: #eee;
 }
 
 a:active {
-    color: #eee;
-} 
-
-a:link {
-    color: #eee;
-} 
-
-a:hover {
-    color: #eee;
+  color: #eee;
 }
 
-a:focused {
-    color: #eee;
+a:link {
+  color: #eee;
+}
+
+a:hover {
+  color: #eee;
 }
 
 a:visited {
-    color: #eee;
+  color: #eee;
 }
-

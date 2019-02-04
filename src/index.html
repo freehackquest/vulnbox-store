@@ -1,52 +1,56 @@
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico">
-    <title>VulnBox Store</title>
-    <link href="./css/index.css" rel="stylesheet">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.ico">
+  <title>VulnBox Store</title>
+  <link href="./css/index.css" rel="stylesheet">
 </head>
-<body>
-<div class="header">
+
+<body class="container">
+  <div class="header">
     <div class="logo"></div>
     <div class="title">
-        Store For fhq-jury-ad
+      Store For fhq-jury-ad
     </div>
-</div>
-<p>
-    It's just collection of services with vulnerabilities for training games like ctf (attack/defence); 
-</p>
-<p>
-    <strong>(!!!) Please don't use this services for production only for training your skills</strong>
-</p>
-<p>
-    <i>For add your service to vulnbox.store please fork and the pull request to <a target="_blank" href="https://github.com/freehackquest/vulnbox-store">https://github.com/freehackquest/vulnbox-store</a></i>
-</p>
+  </div>
 
-<br>
-<br>
-<br>
-<h3>Issues tracker</h3>
-<a target="_blank" href="https://github.com/freehackquest/vulnbox-store/issues">https://github.com/freehackquest/vulnbox-store/issues</a>
+  <div class='text'>
+    <p>
+      It's just collection of services with vulnerabilities for training games like ctf (attack/defence);
+    </p>
+    <p>
+      <strong>(!!!) Please don't use this services for production only for training your skills</strong>
+    </p>
+    <p>
+      <i>For add your service to vulnbox.store please fork and the pull request to <a target="_blank" href="https://github.com/freehackquest/vulnbox-store">https://github.com/freehackquest/vulnbox-store</a></i>
+    </p>
 
+    <br>
+    <br>
+    <br>
+    <h3>Issues tracker</h3>
+    <a target="_blank" href="https://github.com/freehackquest/vulnbox-store/issues">https://github.com/freehackquest/vulnbox-store/issues</a>
+    <br>
+    <br>
+    <br>
+    <h3>Install for linux</h3>
+    <!-- HTML generated using hilite.me -->
+    <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>sudo curl -L <span style="background-color: #111">&quot;https://vulnbox.store/vbs.py&quot;</span> -o /usr/local/bin/vbs
+<span style="color: #996633">$ </span>sudo chmod +x /usr/local/bin/vbs</pre>
+    </div>
 
-<br>
-<br>
-<br>
-<h3>Install for linux</h3>
-<!-- HTML generated using hilite.me -->
-<div style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-    <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>sudo curl -L <span style="background-color: #111">&quot;https://vulnbox.store/vbs.py&quot;</span> -o /usr/local/bin/vbs
-<span style="color: #996633">$ </span>sudo chmod +x /usr/local/bin/vbs
-</pre></div>
+    <br>
+    <br>
+    <br>
+    <h3>Usage</h3>
+    <!-- HTML generated using hilite.me -->
+    <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%">Helper's tool <span style="color: #008800; font-weight: bold">for </span>fhq-jury-ad
 
-<br>
-<br>
-<br>
-<h3>Usage</h3>
-<!-- HTML generated using hilite.me --><div style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">Helper's tool <span style="color: #008800; font-weight: bold">for </span>fhq-jury-ad
-
-    Usage: 
+    Usage:
 	/usr/local/bin/vbs <span style="color: #333333">[</span><span style="color: #007020">command</span><span style="color: #333333">]</span> <span style="color: #333333">[</span>name<span style="color: #333333">]</span>
 
 For push your service please fork and pull request to https://github.com/freehackquest/vulnbox-store
@@ -73,62 +77,64 @@ Directories:
     jury.d - folder with configs <span style="color: #008800; font-weight: bold">for </span>fhq-jury-ad
     docker_jury - folder with Dockerfile <span style="color: #008800; font-weight: bold">for </span>build jury docker
     vulnbox - folder with services and script <span style="color: #008800; font-weight: bold">for </span>vulnbox
-</pre></div>
-
-
-<br>
-<br>
-<br>
-<h3>Example for prepare game</h3>
-<p>Requirements:</p>
-<ul>
-    <li>vbs</li>
-    <li>docker</li>
-    <li>docker-compose</li>
-    <li>nano</li>
-</ul>
-
-<!-- HTML generated using hilite.me -->
-<div style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-<pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>mkdir ~/ctfgame0
-<span style="color: #996633">$ </span>cd ~/ctfgame0
-<span style="color: #996633">$ </span>vbs init
-<span style="color: #996633">$ </span>vbs urls-add http://vulnbox.store/
-<span style="color: #996633">$ </span>vbs update
-<span style="color: #996633">$ </span>vbs search example
-<span style="color: #996633">$ </span>vbs install example_service1
-<span style="color: #996633">$ </span>vbs install example_service2
-<span style="color: #996633">$ </span>vbs teams-search keva
-<span style="color: #996633">$ </span>vbs team-add keva
-<span style="color: #996633">$ </span>vbs team-add someone
-<span style="color: #996633">$ </span>cd docker_jury && ./build_jury.sh
-<span style="color: #996633">$ </span>cd ..
-<span style="color: #996633">$ </span>docker-compose up
-<span style="color: #996633">$ </span>zip -r vulnbox.zip vulnbox
 </pre>
-</div>
-
-<p>vulnbox.zip - please send to your teams</p>
-
-<template-service>
-<br>
-<br>
-<br>
-<hr>
-<h1>{id}</h1>
-<p>Keywords: {keywords}</p>
-<p>Version: {version}; Author: {author}; Created: {created};</p>
-<p style="margin-left:50px">Install:
-    <div style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
-        <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>vbs install {id}</pre>
     </div>
-</p>
-<p>Manual download archive: <a tagret="_blank" href="{download}">{download}</a></p>
-<p>Game: {game}</p>
-<p>Issues: <a tagret="_blank" href="{issues}">{issues}</a></p>
-<p>Checker-Requirements: </p>
-<pre style="margin-left:50px">{checker-install}</pre>
-</template-service>
+
+
+    <br>
+    <br>
+    <br>
+    <h3>Example for prepare game</h3>
+    <p>Requirements:</p>
+    <ul>
+      <li>vbs</li>
+      <li>docker</li>
+      <li>docker-compose</li>
+      <li>nano</li>
+    </ul>
+    <!-- HTML generated using hilite.me -->
+    <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+      <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>mkdir ~/ctfgame0
+      <span style="color: #996633">$ </span>cd ~/ctfgame0
+      <span style="color: #996633">$ </span>vbs init
+      <span style="color: #996633">$ </span>vbs urls-add http://vulnbox.store/
+      <span style="color: #996633">$ </span>vbs update
+      <span style="color: #996633">$ </span>vbs search example
+      <span style="color: #996633">$ </span>vbs install example_service1
+      <span style="color: #996633">$ </span>vbs install example_service2
+      <span style="color: #996633">$ </span>vbs teams-search keva
+      <span style="color: #996633">$ </span>vbs team-add keva
+      <span style="color: #996633">$ </span>vbs team-add someone
+      <span style="color: #996633">$ </span>cd docker_jury && ./build_jury.sh
+      <span style="color: #996633">$ </span>cd ..
+      <span style="color: #996633">$ </span>docker-compose up
+      <span style="color: #996633">$ </span>zip -r vulnbox.zip vulnbox
+    </pre>
+    </div>
+
+    <p>vulnbox.zip - please send to your teams</p>
+
+    <template-service>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <h1>{id}</h1>
+      <p>Keywords: {keywords}</p>
+      <p>Version: {version}; Author: {author}; Created: {created};</p>
+      <p style="margin-left:50px">Install:
+        <div class="terminal" style="background: #000; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+          <pre style="margin: 0; line-height: 125%"><span style="color: #996633">$ </span>vbs install {id}</pre>
+        </div>
+      </p>
+
+      <p>Manual download archive: <a tagret="_blank" href="{download}">{download}</a></p>
+      <p>Game: {game}</p>
+      <p>Issues: <a tagret="_blank" href="{issues}">{issues}</a></p>
+      <p>Checker-Requirements: </p>
+      <pre style="margin-left:50px">{checker-install}</pre>
+    </template-service>
 
 </body>
+
 </html>
